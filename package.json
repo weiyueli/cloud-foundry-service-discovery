@@ -1,12 +1,16 @@
 {
   "name": "cloud-foundry-service-discovery",
   "version": "0.1.0",
-  "description": "",
+  "description": "Axios based cloud foundry service discovery client for node.js. Enable nodejs application dynamically discover and call other regiesterd apps through cloud foundry service registry",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": " npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "files": [
     "lib/**/*"
