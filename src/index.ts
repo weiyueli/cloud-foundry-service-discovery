@@ -9,3 +9,4 @@ class Discovery {
 }
 
 export default Discovery;
+export { Discovery };
