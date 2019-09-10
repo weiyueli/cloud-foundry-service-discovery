@@ -1,5 +1,6 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import Debug from "debug";
+import { URL } from "url";
 import * as NodeCache from "node-cache";
 import * as QueryString from "querystring";
 
@@ -99,7 +100,7 @@ function getInstances(hostname: string): Promise<string[]> {
     debug("Resolving hostname %s", hostname);
     return getAccessToken()
         .then((accessToken) => Axios.request({
-            url: credentials.uri + "/eureka/apps" + hostname,
+            url: credentials.uri + "/eureka/apps/" + hostname,
             headers: {
                 Authorization: "Bearer " + accessToken,
             },

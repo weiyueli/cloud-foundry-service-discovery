@@ -3,6 +3,9 @@
         "tslint:recommended"
     ],
     "rules": {
+        "ordered-imports": [
+            false
+        ],
         "object-literal-sort-keys": false
     }
 }
