@@ -25,6 +25,7 @@ function getCache(key: string): Promise<string[]> {
         cache.get(key, (err, value) => {
             if (err || !value) {
                 reject(new Error("No cache found"));
+                return;
             }
             debug("Found cache for %s", key);
             resolve(value as string[]);
@@ -38,6 +39,7 @@ function setCache(key: string, value: string[]): Promise<string[]> {
             if (err || !success) {
                 debug("Error set cache");
                 reject(value);
+                return;
             }
             resolve(value);
         });
@@ -59,6 +61,7 @@ function selectRandom(instances: string[]): Promise<string> {
     return new Promise((resolve, reject) => {
         if (instances.length === 0) {
             reject(new Error("No healthy instances available"));
+            return;
         }
         const randomIndex = Math.floor(Math.random() * Math.floor(instances.length));
         resolve(instances[randomIndex]);
@@ -70,10 +73,12 @@ function setCredentials(): Promise<void> {
         const vcapServices: string = process.env.VCAP_SERVICES || "";
         if (!vcapServices) {
             reject(new Error("Cloud Foundry enviroment variable VCAP_SERVICES is undefined"));
+            return;
         }
         const pServiceRegistry = JSON.parse(vcapServices)["p-service-registry"];
         if (!pServiceRegistry) {
             reject(new Error("Cloud Foundry Service [Service Registry] is not binded to application"));
+            return;
         }
         credentials = JSON.parse(vcapServices)["p-service-registry"][0].credentials;
         resolve();
