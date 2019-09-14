@@ -1,6 +1,6 @@
 {
   "name": "cloud-foundry-service-discovery",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Axios based cloud foundry service discovery client for node.js. Enable nodejs application dynamically discover and call other regiesterd apps through cloud foundry service registry",
   "main": "lib/index.js",
   "scripts": {
@@ -35,7 +35,6 @@
   "homepage": "https://github.com/weiyueli/cloud-foundry-service-discovery#readme",
   "devDependencies": {
     "@types/debug": "^4.1.5",
-    "@types/node": "^8.10.53",
     "@types/node-cache": "^4.1.3",
     "tslint": "^5.19.0",
     "typescript": "^3.6.2"
